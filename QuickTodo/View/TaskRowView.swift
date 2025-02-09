@@ -10,9 +10,12 @@ import SwiftUI
 // MARK: - Task Row View
 
 struct TaskRowView: View {
+    @Binding var showAddTaskView: Bool
+    @Binding var taskToEdit: Task?
+    @Binding var taskToDelete: Task?
+    @Binding var showDeleteConfirmation: Bool
     @State private var isEditing = false
     @State private var editedTitle = ""
-    @State private var showAddTaskView = false
     let task: Task
     let taskViewModel: TaskViewModel
 
@@ -65,7 +68,7 @@ private extension TaskRowView {
                     .font(.headline)
                     .fontWeight(.bold)
                     .strikethrough(task.isCompleted, color: .gray)
-                    .foregroundColor(task.isCompleted ? .gray : .primary)
+                    .foregroundColor(task.isCompleted ? .gray : .black)
                     .lineLimit(1)
                 Spacer()
             }
@@ -73,7 +76,7 @@ private extension TaskRowView {
             if let dueDate = task.dueDate {
                 Text("Due: \(formattedDate(dueDate))")
                     .font(.subheadline)
-                    .foregroundColor(dueDate < Date() && !task.isCompleted ? .red : .secondary)
+                    .foregroundColor(dueDate < Date() && !task.isCompleted ? .red : .gray)
             }
         }
         .contentShape(Rectangle())
@@ -90,15 +93,21 @@ private extension TaskRowView {
     }
     
     var editButton: some View {
-        Button(action: { showAddTaskView = true }) {
+        Button(action: {
+            showAddTaskView = true
+            taskToDelete = nil
+            taskToEdit = task
+        }) {
             Label("Edit", systemImage: "pencil")
         }
         .tint(.blue)
     }
     
     var deleteButton: some View {
-        Button(role: .destructive) {
-            taskViewModel.deleteTask(taskID: task.id)
+        Button {
+            showDeleteConfirmation = true
+            taskToEdit = nil
+            taskToDelete = task
         } label: {
             Label("Delete", systemImage: "trash")
         }
@@ -115,5 +124,10 @@ private extension TaskRowView {
 // MARK: - Task Row View - Preview
 
 #Preview {
-    TaskRowView(task: Task(id: UUID(), title: "Task", isCompleted: false), taskViewModel: TaskViewModel())
+    TaskRowView(
+        showAddTaskView: .constant(false),
+        taskToEdit: .constant(nil), taskToDelete: .constant(nil), showDeleteConfirmation: .constant(false),
+        task: Task(id: UUID(), title: "Sample Task", isCompleted: false, dueDate: Date()),
+        taskViewModel: TaskViewModel()
+    )
 }

@@ -12,11 +12,12 @@ import SwiftUI
 struct AddTaskView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var taskViewModel: TaskViewModel
+    @Binding var taskToEdit: Task?
     @State var dueDate: Date
     @State private var title: String = ""
     @State private var isCompleted: Bool = false
-    var taskToEdit: Task?
-
+    @FocusState private var isTitleFocused: Bool
+    
     var body: some View {
         ZStack {
             // Gradient Background
@@ -33,6 +34,7 @@ struct AddTaskView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .accessibilityLabel("Task Title")
+                    .focused($isTitleFocused) // Attach focus state
                 
                 // Due Date Picker
                 DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
@@ -56,6 +58,14 @@ struct AddTaskView: View {
             }
             .padding()
             .onAppear(perform: setupEditingTask)
+            .onAppear {
+                // Focus the title field when the view appears
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    if taskToEdit == nil {
+                        isTitleFocused = true
+                    }
+                }
+            }
             .navigationTitle(taskToEdit == nil ? "Add Task" : "Edit Task")
         }
     }
@@ -93,5 +103,5 @@ struct AddTaskView: View {
 // MARK: - Add Task View - Preview
 
 #Preview {
-    AddTaskView(taskViewModel: TaskViewModel(), dueDate: Date(), taskToEdit: nil)
+    AddTaskView(taskViewModel: TaskViewModel(), taskToEdit: .constant(nil), dueDate: Date())
 }

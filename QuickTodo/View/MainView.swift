@@ -10,6 +10,7 @@ import SwiftUI
 // MARK: - Main View
 
 struct MainView: View {
+    @Environment(\.colorScheme) var colorScheme
     @StateObject private var taskViewModel = TaskViewModel()
     @State private var selectedFilter: TaskFilter = .all
     @State private var showAddTaskView = false
@@ -18,6 +19,9 @@ struct MainView: View {
     @State private var scale3: CGFloat = 0
     @State private var scale: CGFloat = 1.0
     @State private var isEmptyStateAnimating = false
+    @State private var showDeleteConfirmation: Bool = false
+    @State var taskToEdit: Task? = nil
+    @State var taskToDelete: Task? = nil
     
     private let foreverAnimation = Animation.linear.speed(0.2).repeatForever(autoreverses: false)
     
@@ -47,7 +51,15 @@ struct MainView: View {
             .navigationTitle("QuickTodo")
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showAddTaskView) {
-                AddTaskView(taskViewModel: taskViewModel, dueDate: Date())
+                AddTaskView(taskViewModel: taskViewModel, taskToEdit: $taskToEdit, dueDate: Date())
+            }
+            .sheet(isPresented: $showDeleteConfirmation) {
+                DeleteConfirmationPopup(isPresented: $showDeleteConfirmation, taskToDelete: $taskToDelete, onDelete: {
+                    if let id = taskToDelete?.id {
+                        taskViewModel.deleteTask(taskID: id)
+                    }
+                    taskToDelete = nil // Clear after deletion
+                })
             }
             .onAppear {
                 taskViewModel.fetchTasks()
@@ -76,10 +88,9 @@ private extension MainView {
     var taskListView: some View {
         List {
             ForEach(taskViewModel.filteredTasks(for: selectedFilter)) { task in
-                TaskRowView(task: taskViewModel.mapToTask(from: task), taskViewModel: taskViewModel)
+                TaskRowView(showAddTaskView: $showAddTaskView, taskToEdit: $taskToEdit, taskToDelete: $taskToDelete, showDeleteConfirmation: $showDeleteConfirmation, task: taskViewModel.mapToTask(from: task), taskViewModel: taskViewModel)
                     .listRowBackground(rowBackgroundColor(for: taskViewModel.mapToTask(from: task)))
             }
-            .onDelete(perform: deleteTasks)
         }
         .listRowSpacing(15)
         .padding(.top, -20)
@@ -93,7 +104,10 @@ private extension MainView {
             Spacer()
             HStack {
                 Spacer()
-                Button(action: { showAddTaskView = true }) {
+                Button(action: {
+                    showAddTaskView = true
+                    taskToEdit = nil
+                }) {
                     waveAnimationButton
                 }
                 .padding()
@@ -152,7 +166,7 @@ private extension MainView {
                 .foregroundColor(.white)
                 .background(
                     LinearGradient(
-                        gradient: Gradient(colors: [.blue, .purple]),
+                        gradient: Gradient(colors: buttonGradientColors),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -160,11 +174,11 @@ private extension MainView {
                 .cornerRadius(30)
         }
     }
-    
+
     func createWave(scale: Binding<CGFloat>, delay: Double) -> some View {
         Image(systemName: "circle.fill")
             .font(.system(size: 60))
-            .foregroundColor(.purple.opacity(0.3))
+            .foregroundColor(waveColor.opacity(0.3))
             .opacity(1 - scale.wrappedValue)
             .scaleEffect(1 + (scale.wrappedValue * 2))
             .onAppear {
@@ -174,6 +188,17 @@ private extension MainView {
                     }
                 }
             }
+    }
+
+    // Dynamic Colors for Dark Mode
+    private var buttonGradientColors: [Color] {
+        colorScheme == .dark
+            ? [Color.purple.opacity(0.9), Color.black.opacity(0.8)] // Dark mode colors
+            : [Color.blue, Color.purple] // Light mode colors
+    }
+
+    private var waveColor: Color {
+        colorScheme == .dark ? Color.white : Color.purple
     }
     
     func startEmptyStateAnimation() {

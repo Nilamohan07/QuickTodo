@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "todo_app_icon_1024x1024.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -12,6 +13,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "DALL·E 2025-02-09 11.13.30 - A flat design icon of a to-do app featuring a clipboard with a checklist. The clipboard has a dark brown color, the paper is light gray with blue hori.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -23,6 +25,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "DALL·E 2025-02-09 11.13.45 - A flat design icon of a to-do app featuring a clipboard with a checklist. The clipboard is tinted with a gradient of blue and purple, the paper is lig.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
