@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct QuickTodoApp: App {
+    @State private var taskViewModel = TaskViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .navigationViewStyle(.stack)
+            TaskListView(viewModel: taskViewModel)
         }
     }
 }
