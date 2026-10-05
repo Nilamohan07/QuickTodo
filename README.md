@@ -6,6 +6,7 @@ You can add tasks with a due date, edit them, mark them done with a tap and dele
 
 ## Screenshots
 
+![QuickTodo](https://github.com/user-attachments/assets/746f67ef-6680-44eb-b4a9-82662274aa08)
 ![Simulator Screenshot - iPad mini (A17 Pro) - 2025-02-09 at 14 38 17](https://github.com/user-attachments/assets/d443e67a-2408-40b7-a373-eeee8599759a)
 ![Simulator Screenshot - iPad mini (A17 Pro) - 2025-02-09 at 14 38 35](https://github.com/user-attachments/assets/2142cf40-4534-45b4-8a6b-a58ec616dbd7)
 
