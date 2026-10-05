@@ -10,12 +10,28 @@
 		E1B15E752D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1B15E732D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AA0000092D4A726A001B4417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1A8B7102D4A726A004493A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1A8B7172D4A726A004493A8;
+			remoteInfo = QuickTodo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		AA0000022D4A726A001B4417 /* QuickTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8B7182D4A726A004493A8 /* QuickTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B15E742D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDetailsDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		E15F46522F5F338A00E79F69 /* QuickTodoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickTodoTests;
+			sourceTree = "<group>";
+		};
 		E1A8B71A2D4A726A004493A8 /* QuickTodo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = QuickTodo;
@@ -24,6 +40,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA0000042D4A726A001B4417 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1A8B7152D4A726A004493A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +62,7 @@
 			children = (
 				E1B15E732D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld */,
 				E1A8B71A2D4A726A004493A8 /* QuickTodo */,
+				E15F46522F5F338A00E79F69 /* QuickTodoTests */,
 				E1A8B7192D4A726A004493A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A8B7182D4A726A004493A8 /* QuickTodo.app */,
+				AA0000022D4A726A001B4417 /* QuickTodoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +79,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AA0000012D4A726A001B4417 /* QuickTodoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000082D4A726A001B4417 /* Build configuration list for PBXNativeTarget "QuickTodoTests" */;
+			buildPhases = (
+				AA0000032D4A726A001B4417 /* Sources */,
+				AA0000042D4A726A001B4417 /* Frameworks */,
+				AA0000052D4A726A001B4417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA000A0A2D4A726A001B4417 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E15F46522F5F338A00E79F69 /* QuickTodoTests */,
+			);
+			name = QuickTodoTests;
+			productName = QuickTodoTests;
+			productReference = AA0000022D4A726A001B4417 /* QuickTodoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E1A8B7172D4A726A004493A8 /* QuickTodo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1A8B7272D4A726C004493A8 /* Build configuration list for PBXNativeTarget "QuickTodo" */;
@@ -86,6 +132,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					AA0000012D4A726A001B4417 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = E1A8B7172D4A726A004493A8;
+					};
 					E1A8B7172D4A726A004493A8 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -106,11 +156,19 @@
 			projectRoot = "";
 			targets = (
 				E1A8B7172D4A726A004493A8 /* QuickTodo */,
+				AA0000012D4A726A001B4417 /* QuickTodoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA0000052D4A726A001B4417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1A8B7162D4A726A004493A8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,6 +179,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA0000032D4A726A001B4417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1A8B7142D4A726A004493A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,7 +196,63 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AA000A0A2D4A726A001B4417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1A8B7172D4A726A004493A8 /* QuickTodo */;
+			targetProxy = AA0000092D4A726A001B4417 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		AA0000062D4A726A001B4417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PG2N57MN4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.udhayanila.in.QuickTodoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickTodo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickTodo";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		AA0000072D4A726A001B4417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PG2N57MN4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.udhayanila.in.QuickTodoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickTodo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickTodo";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 		E1A8B7252D4A726C004493A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -329,6 +450,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA0000082D4A726A001B4417 /* Build configuration list for PBXNativeTarget "QuickTodoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000062D4A726A001B4417 /* Debug */,
+				AA0000072D4A726A001B4417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E1A8B7132D4A726A004493A8 /* Build configuration list for PBXProject "QuickTodo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
