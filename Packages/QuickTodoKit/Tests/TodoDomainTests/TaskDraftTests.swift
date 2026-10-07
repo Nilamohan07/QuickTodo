@@ -59,7 +59,7 @@ struct TaskDraftTests {
     }
 
     @Test func makeItemForNewDraft() throws {
-        let dueDate = Date(timeIntervalSince1970: 1_000)
+        let dueDate = Date(timeIntervalSince1970: 1000)
         var draft = TaskDraft(defaultDueDate: dueDate)
         draft.title = " Pay rent \n"
         draft.isCompleted = true

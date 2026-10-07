@@ -154,10 +154,10 @@ struct TaskListViewModelTests {
         let viewModel = makeViewModel()
         await viewModel.save(draft(title: "Toggle Me"))
 
-        await viewModel.toggleCompletion(of: try #require(viewModel.items.first))
+        try await viewModel.toggleCompletion(of: #require(viewModel.items.first))
         #expect(viewModel.items.first?.isCompleted == true)
 
-        await viewModel.toggleCompletion(of: try #require(viewModel.items.first))
+        try await viewModel.toggleCompletion(of: #require(viewModel.items.first))
         #expect(viewModel.items.first?.isCompleted == false)
     }
 
@@ -195,7 +195,7 @@ struct TaskListViewModelTests {
     @Test func cancellingDeletionKeepsItem() async throws {
         let viewModel = makeViewModel()
         await viewModel.save(draft(title: "Keep Me"))
-        viewModel.requestDeletion(of: try #require(viewModel.items.first))
+        try viewModel.requestDeletion(of: #require(viewModel.items.first))
 
         viewModel.isConfirmingDeletion = false
 
@@ -257,7 +257,7 @@ struct TaskListViewModelTests {
         await viewModel.save(draft(title: "Task B"))
         viewModel.selectedFilter = .active
 
-        await viewModel.toggleCompletion(of: try #require(viewModel.items.first { $0.title == "Task A" }))
+        try await viewModel.toggleCompletion(of: #require(viewModel.items.first { $0.title == "Task A" }))
 
         #expect(viewModel.visibleItems.map(\.title) == ["Task B"])
         viewModel.selectedFilter = .completed

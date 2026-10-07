@@ -104,7 +104,7 @@ struct CoreDataStackTests {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
         let url = directory.appending(path: "Tasks.sqlite")
-        let item = TodoItem(title: "Persisted", dueDate: Date(timeIntervalSince1970: 1_000))
+        let item = TodoItem(title: "Persisted", dueDate: Date(timeIntervalSince1970: 1000))
 
         try await CoreDataTodoStore(stack: CoreDataStack(location: .onDisk(url))).insert(item)
         let reopened = CoreDataTodoStore(stack: CoreDataStack(location: .onDisk(url)))

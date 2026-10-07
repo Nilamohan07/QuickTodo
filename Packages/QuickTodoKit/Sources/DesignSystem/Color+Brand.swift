@@ -8,6 +8,7 @@
 import SwiftUI
 
 public extension Color {
+
     // MARK: - Status
 
     /// Tint for overdue tasks.

@@ -38,7 +38,7 @@ struct AppIntegrationTests {
         await viewModel.save(edited)
         #expect(viewModel.items.map(\.title) == ["Updated"])
 
-        await viewModel.delete(try #require(viewModel.items.first))
+        try await viewModel.delete(#require(viewModel.items.first))
         #expect(viewModel.items.isEmpty)
         #expect(viewModel.presentedError == nil)
         #expect(await reminders.cancelledIDs == [item.id])
