@@ -10,38 +10,48 @@ You can add tasks with a due date, edit them, mark them done with a tap and dele
 ![Simulator Screenshot - iPad mini (A17 Pro) - 2025-02-09 at 14 38 17](https://github.com/user-attachments/assets/d443e67a-2408-40b7-a373-eeee8599759a)
 ![Simulator Screenshot - iPad mini (A17 Pro) - 2025-02-09 at 14 38 35](https://github.com/user-attachments/assets/2142cf40-4534-45b4-8a6b-a58ec616dbd7)
 
+## Features
+
+- Due-date reminders. A local notification goes off at 09:00 on the due day, and tapping it opens the task. Reminders are rescheduled when a task changes and cancelled when it's completed or deleted.
+- Deep links: `quicktodo://task/new` opens the editor, and `quicktodo://task/<id>` opens a task.
+- An "Add Task" action in Shortcuts and Siri, which goes through the same validation and storage as the app.
+- Strings live in String Catalogs, including a pluralised "tasks remaining" count.
+
 ## Architecture
 
-The app uses MVVM with a small persistence layer behind a protocol.
+The app target is a thin shell. Everything else lives in a local Swift package, `Packages/QuickTodoKit`, split into targets:
 
 ```
-QuickTodo/
-├── App/            App entry point
-├── Features/
-│   ├── TaskList/   TaskListView, TaskRowView, FloatingAddButton, TaskViewModel
-│   └── TaskEditor/ TaskEditorView (add and edit) and TaskDraft
-├── Models/         TodoItem and TaskFilter
-├── Persistence/    CoreDataManager, TodoStore protocol and its Core Data implementation
-├── Shared/         Reusable styles and backgrounds
-└── Extensions/
+QuickTodo/                   App target: composition root, router, deep links, App Intents
+Packages/QuickTodoKit/
+├── TodoDomain               TodoItem, TaskFilter, TaskDraft, TodoStore, reminders logic
+├── TodoPersistence          Core Data stack and store (the data model ships here)
+├── TodoReminders            Local notifications
+├── DesignSystem             Tokens, colors, button style, shared components
+├── TaskListFeature          List screen and its view model
+└── TaskEditorFeature        Add and edit screen
 ```
 
-- **Views** only render state and forward user actions. They don't talk to Core Data.
-- **`TaskViewModel`** is an `@Observable`, `@MainActor` class that holds the task list, the selected filter, the pending delete confirmation and any error to show. It depends on `TodoStore`, which is injected through the initializer.
-- **`TodoStore`** is a small protocol (fetch, insert, update, delete). `CoreDataTodoStore` is the real implementation. It maps the `TaskDetails` entity to a plain `TodoItem` value type so nothing above the persistence layer deals with managed objects.
-- **`CoreDataManager`** sets up the `NSPersistentContainer`. It can also create an in-memory store, which the tests and SwiftUI previews use.
-- Persistence failures are turned into a `TodoStoreError` with a readable message. The list screen shows it in an alert, and the details go to `os.Logger`.
+- Features depend only on `TodoDomain` and `DesignSystem`. They don't know about Core Data, notifications or each other.
+- `TaskListViewModel` is an `@Observable`, `@MainActor` class that talks to a `TodoStore` protocol with async methods.
+- `CoreDataTodoStore` does all its work on background contexts and hands back plain `TodoItem` values.
+- `AppEnvironment` is the single place dependencies are built. It has live, UI-testing and preview variants.
+- Everything builds in Swift 6 language mode with complete concurrency checking.
+
+[ARCHITECTURE.md](ARCHITECTURE.md) covers the module graph, data flow, concurrency model, persistence and testing in more detail. The main decisions are recorded in [docs/adr](docs/adr).
 
 ## Tech
 
-- Swift, SwiftUI (`NavigationStack`, Observation, SF Symbol effects)
+- Swift 6, SwiftUI, Observation, async/await
 - Core Data
-- XCTest
+- UserNotifications, App Intents
+- Swift Testing and XCTest (UI tests)
+- SwiftLint, SwiftFormat, GitHub Actions
 
 ## Requirements
 
 - iOS 18.2 or later
-- Xcode 16 or later (tested with the current Xcode release)
+- Xcode 26 or later
 
 ## Running the app
 
@@ -51,20 +61,23 @@ cd QuickTodo
 open QuickTodo.xcodeproj
 ```
 
-Pick the `QuickTodo` scheme and an iOS simulator or device, then run it with Cmd+R.
+Pick the `QuickTodo` scheme and an iOS simulator or device, then run it with Cmd+R. Xcode resolves the local package on its own.
 
 ## Running the tests
 
-In Xcode, press Cmd+U. From the command line:
+In Xcode, press Cmd+U. The scheme uses `QuickTodo.xctestplan`, which runs the app tests, every package test target and the UI tests, with code coverage on. From the command line:
 
 ```bash
 xcodebuild test \
   -project QuickTodo.xcodeproj \
   -scheme QuickTodo \
-  -destination 'platform=iOS Simulator,name=iPhone 16'
+  -testPlan QuickTodo \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 ```
 
-The tests cover the models, the Core Data store (using an in-memory store) and the view model (using a mock store).
+UI tests launch the app with `-ui-testing`. That gives them an in-memory store with three known tasks and a fixed date, so they see the same screen on every run.
+
+CI runs the same plan on every push and pull request (`.github/workflows/ci.yml`), plus SwiftLint and SwiftFormat checks.
 
 ## License
 

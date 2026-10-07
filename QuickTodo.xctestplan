@@ -1,0 +1,108 @@
+{
+  "configurations" : [
+    {
+      "id" : "6F2C1A0E-3B7D-4E59-9A81-2D4C6B8E1F03",
+      "name" : "Default",
+      "options" : {}
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:QuickTodo.xcodeproj",
+          "identifier" : "E1A8B7172D4A726A004493A8",
+          "name" : "QuickTodo"
+        },
+        {
+          "containerPath" : "container:Packages/QuickTodoKit",
+          "identifier" : "TodoDomain",
+          "name" : "TodoDomain"
+        },
+        {
+          "containerPath" : "container:Packages/QuickTodoKit",
+          "identifier" : "TodoPersistence",
+          "name" : "TodoPersistence"
+        },
+        {
+          "containerPath" : "container:Packages/QuickTodoKit",
+          "identifier" : "TodoReminders",
+          "name" : "TodoReminders"
+        },
+        {
+          "containerPath" : "container:Packages/QuickTodoKit",
+          "identifier" : "TaskListFeature",
+          "name" : "TaskListFeature"
+        },
+        {
+          "containerPath" : "container:Packages/QuickTodoKit",
+          "identifier" : "TaskEditorFeature",
+          "name" : "TaskEditorFeature"
+        },
+        {
+          "containerPath" : "container:Packages/QuickTodoKit",
+          "identifier" : "DesignSystem",
+          "name" : "DesignSystem"
+        }
+      ]
+    },
+    "language" : "en",
+    "region" : "GB",
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:QuickTodo.xcodeproj",
+      "identifier" : "E1A8B7172D4A726A004493A8",
+      "name" : "QuickTodo"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:QuickTodo.xcodeproj",
+        "identifier" : "AA0000012D4A726A001B4417",
+        "name" : "QuickTodoTests"
+      },
+      "parallelizable" : true
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages/QuickTodoKit",
+        "identifier" : "TodoDomainTests",
+        "name" : "TodoDomainTests"
+      },
+      "parallelizable" : true
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages/QuickTodoKit",
+        "identifier" : "TodoPersistenceTests",
+        "name" : "TodoPersistenceTests"
+      },
+      "parallelizable" : true
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages/QuickTodoKit",
+        "identifier" : "TodoRemindersTests",
+        "name" : "TodoRemindersTests"
+      },
+      "parallelizable" : true
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages/QuickTodoKit",
+        "identifier" : "TaskListFeatureTests",
+        "name" : "TaskListFeatureTests"
+      },
+      "parallelizable" : true
+    },
+    {
+      "target" : {
+        "containerPath" : "container:QuickTodo.xcodeproj",
+        "identifier" : "E1E734C22FA65DB000D4C0DE",
+        "name" : "QuickTodoUITests"
+      },
+      "parallelizable" : false
+    }
+  ],
+  "version" : 1
+}
