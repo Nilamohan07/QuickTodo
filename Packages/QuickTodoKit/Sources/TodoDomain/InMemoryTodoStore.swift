@@ -19,7 +19,7 @@ public actor InMemoryTodoStore: TodoStore {
         // Matches SQLite, where tasks without a due date sort first.
         items.values.sorted { lhs, rhs in
             switch (lhs.dueDate, rhs.dueDate) {
-            case let (lhsDate?, rhsDate?) where lhsDate != rhsDate:
+            case (let lhsDate?, let rhsDate?) where lhsDate != rhsDate:
                 lhsDate < rhsDate
             case (nil, _?):
                 true

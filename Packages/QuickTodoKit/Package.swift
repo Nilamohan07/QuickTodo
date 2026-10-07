@@ -22,6 +22,7 @@ let package = Package(
         .library(name: "TaskEditorFeature", targets: ["TaskEditorFeature"])
     ],
     targets: [
+
         // MARK: - Core
 
         .target(

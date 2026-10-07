@@ -31,7 +31,7 @@ struct AppRouterTests {
     @Test func urlIsParsedAndRouted() throws {
         let id = UUID()
 
-        router.handle(try #require(URL(string: "quicktodo://task/\(id.uuidString)")))
+        try router.handle(#require(URL(string: "quicktodo://task/\(id.uuidString)")))
 
         #expect(router.sheet == .editTask(id))
     }
@@ -39,7 +39,7 @@ struct AppRouterTests {
     @Test func unsupportedURLLeavesCurrentSheet() throws {
         router.present(.newTask)
 
-        router.handle(try #require(URL(string: "quicktodo://settings")))
+        try router.handle(#require(URL(string: "quicktodo://settings")))
 
         #expect(router.sheet == .newTask)
     }

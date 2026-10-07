@@ -11,5 +11,8 @@
 --self remove
 --importgrouping alpha
 --header ignore
---disable redundantReturn,wrapMultilineStatementBraces,blankLinesAtStartOfScope,organizeDeclarations
+--decimalgrouping 3,5
+--ranges no-space
+--patternlet inline
+--disable redundantReturn,wrapMultilineStatementBraces,blankLinesAtStartOfScope,organizeDeclarations,wrapIfStatementBodies,wrapPropertyBodies,docComments
 --exclude Packages/QuickTodoKit/.build,DerivedData
