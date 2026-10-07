@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1B15E752D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1B15E732D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld */; };
+		E14F0F0E2FA64EDB00D4C0DE /* TaskEditorFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E17F94222FA62E3E00D4C0DE /* TaskEditorFeature */; };
+		E156832D2FA650C000D4C0DE /* TodoDomain in Frameworks */ = {isa = PBXBuildFile; productRef = E12583CF2FA675B700D4C0DE /* TodoDomain */; };
+		E16E22C92FA6FD3E00D4C0DE /* TaskListFeature in Frameworks */ = {isa = PBXBuildFile; productRef = E15F41432FA6E13F00D4C0DE /* TaskListFeature */; };
+		E172DFEB2FA619D200D4C0DE /* TodoReminders in Frameworks */ = {isa = PBXBuildFile; productRef = E151DB3A2FA6199F00D4C0DE /* TodoReminders */; };
+		E1E3B3F22FA6D5AF00D4C0DE /* TodoPersistence in Frameworks */ = {isa = PBXBuildFile; productRef = E11F07632FA631DF00D4C0DE /* TodoPersistence */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -18,13 +22,31 @@
 			remoteGlobalIDString = E1A8B7172D4A726A004493A8;
 			remoteInfo = QuickTodo;
 		};
+		E17AD7602FA6906000D4C0DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1A8B7102D4A726A004493A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1A8B7172D4A726A004493A8;
+			remoteInfo = QuickTodo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AA0000022D4A726A001B4417 /* QuickTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E18F6D2B2FA65D6D00D4C0DE /* QuickTodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickTodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8B7182D4A726A004493A8 /* QuickTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1B15E742D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDetailsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		E1F4645E2FA6103D00D4C0DE /* QuickTodoKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = QuickTodoKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E13590D12FA6D08900D4C0DE /* Exceptions for "QuickTodo" folder in "QuickTodo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E1A8B7172D4A726A004493A8 /* QuickTodo */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E15F46522F5F338A00E79F69 /* QuickTodoTests */ = {
@@ -34,7 +56,15 @@
 		};
 		E1A8B71A2D4A726A004493A8 /* QuickTodo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E13590D12FA6D08900D4C0DE /* Exceptions for "QuickTodo" folder in "QuickTodo" target */,
+			);
 			path = QuickTodo;
+			sourceTree = "<group>";
+		};
+		E1F479F32FA68D9200D4C0DE /* QuickTodoUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickTodoUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -51,18 +81,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E156832D2FA650C000D4C0DE /* TodoDomain in Frameworks */,
+				E1E3B3F22FA6D5AF00D4C0DE /* TodoPersistence in Frameworks */,
+				E172DFEB2FA619D200D4C0DE /* TodoReminders in Frameworks */,
+				E16E22C92FA6FD3E00D4C0DE /* TaskListFeature in Frameworks */,
+				E14F0F0E2FA64EDB00D4C0DE /* TaskEditorFeature in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1E87F772FA6DC3000D4C0DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1328EDB2FA6602500D4C0DE /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				E1F4645E2FA6103D00D4C0DE /* QuickTodoKit */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		E1A8B70F2D4A726A004493A8 = {
 			isa = PBXGroup;
 			children = (
-				E1B15E732D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld */,
 				E1A8B71A2D4A726A004493A8 /* QuickTodo */,
 				E15F46522F5F338A00E79F69 /* QuickTodoTests */,
+				E1F479F32FA68D9200D4C0DE /* QuickTodoUITests */,
+				E1328EDB2FA6602500D4C0DE /* Packages */,
 				E1A8B7192D4A726A004493A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +123,7 @@
 			children = (
 				E1A8B7182D4A726A004493A8 /* QuickTodo.app */,
 				AA0000022D4A726A001B4417 /* QuickTodoTests.xctest */,
+				E18F6D2B2FA65D6D00D4C0DE /* QuickTodoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,10 +169,36 @@
 			);
 			name = QuickTodo;
 			packageProductDependencies = (
+				E12583CF2FA675B700D4C0DE /* TodoDomain */,
+				E11F07632FA631DF00D4C0DE /* TodoPersistence */,
+				E151DB3A2FA6199F00D4C0DE /* TodoReminders */,
+				E15F41432FA6E13F00D4C0DE /* TaskListFeature */,
+				E17F94222FA62E3E00D4C0DE /* TaskEditorFeature */,
 			);
 			productName = QuickTodo;
 			productReference = E1A8B7182D4A726A004493A8 /* QuickTodo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E1E734C22FA65DB000D4C0DE /* QuickTodoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E13E49CB2FA6B6D400D4C0DE /* Build configuration list for PBXNativeTarget "QuickTodoUITests" */;
+			buildPhases = (
+				E1D8C0582FA6447500D4C0DE /* Sources */,
+				E1E87F772FA6DC3000D4C0DE /* Frameworks */,
+				E1E3E42A2FA6C01600D4C0DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E176D7972FA6234000D4C0DE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E1F479F32FA68D9200D4C0DE /* QuickTodoUITests */,
+			);
+			name = QuickTodoUITests;
+			productName = QuickTodoUITests;
+			productReference = E18F6D2B2FA65D6D00D4C0DE /* QuickTodoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -139,6 +217,10 @@
 					E1A8B7172D4A726A004493A8 = {
 						CreatedOnToolsVersion = 16.2;
 					};
+					E1E734C22FA65DB000D4C0DE = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = E1A8B7172D4A726A004493A8;
+					};
 				};
 			};
 			buildConfigurationList = E1A8B7132D4A726A004493A8 /* Build configuration list for PBXProject "QuickTodo" */;
@@ -150,6 +232,9 @@
 			);
 			mainGroup = E1A8B70F2D4A726A004493A8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E1F299672FA6130700D4C0DE /* XCLocalSwiftPackageReference "Packages/QuickTodoKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E1A8B7192D4A726A004493A8 /* Products */;
 			projectDirPath = "";
@@ -157,6 +242,7 @@
 			targets = (
 				E1A8B7172D4A726A004493A8 /* QuickTodo */,
 				AA0000012D4A726A001B4417 /* QuickTodoTests */,
+				E1E734C22FA65DB000D4C0DE /* QuickTodoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -170,6 +256,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E1A8B7162D4A726A004493A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1E3E42A2FA6C01600D4C0DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,7 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1B15E752D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1D8C0582FA6447500D4C0DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +300,11 @@
 			isa = PBXTargetDependency;
 			target = E1A8B7172D4A726A004493A8 /* QuickTodo */;
 			targetProxy = AA0000092D4A726A001B4417 /* PBXContainerItemProxy */;
+		};
+		E176D7972FA6234000D4C0DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1A8B7172D4A726A004493A8 /* QuickTodo */;
+			targetProxy = E17AD7602FA6906000D4C0DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -222,7 +326,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickTodo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickTodo";
 				XROS_DEPLOYMENT_TARGET = 2.2;
@@ -246,12 +350,54 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickTodo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickTodo";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
+		};
+		E106713C2FA61D7700D4C0DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PG2N57MN4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.udhayanila.in.QuickTodoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuickTodo;
+			};
+			name = Release;
+		};
+		E17264BE2FA645C000D4C0DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PG2N57MN4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.udhayanila.in.QuickTodoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QuickTodo;
+			};
+			name = Debug;
 		};
 		E1A8B7252D4A726C004493A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -311,6 +457,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -364,6 +511,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
 		};
@@ -373,6 +521,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QuickTodo/QuickTodo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickTodo/Preview Content\"";
@@ -380,6 +529,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickTodo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QuickTodo;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -397,11 +548,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.udhayanila.in.QuickTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -413,6 +565,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = QuickTodo/QuickTodo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QuickTodo/Preview Content\"";
@@ -420,6 +573,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickTodo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QuickTodo;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -437,11 +592,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.udhayanila.in.QuickTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -455,6 +611,15 @@
 			buildConfigurations = (
 				AA0000062D4A726A001B4417 /* Debug */,
 				AA0000072D4A726A001B4417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E13E49CB2FA6B6D400D4C0DE /* Build configuration list for PBXNativeTarget "QuickTodoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E17264BE2FA645C000D4C0DE /* Debug */,
+				E106713C2FA61D7700D4C0DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -479,18 +644,35 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		E1B15E732D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E1B15E742D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodel */,
-			);
-			currentVersion = E1B15E742D4B4436001B4417 /* TaskDetailsDataModel.xcdatamodel */;
-			path = TaskDetailsDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCLocalSwiftPackageReference section */
+		E1F299672FA6130700D4C0DE /* XCLocalSwiftPackageReference "Packages/QuickTodoKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/QuickTodoKit;
 		};
-/* End XCVersionGroup section */
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E11F07632FA631DF00D4C0DE /* TodoPersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TodoPersistence;
+		};
+		E12583CF2FA675B700D4C0DE /* TodoDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TodoDomain;
+		};
+		E151DB3A2FA6199F00D4C0DE /* TodoReminders */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TodoReminders;
+		};
+		E15F41432FA6E13F00D4C0DE /* TaskListFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TaskListFeature;
+		};
+		E17F94222FA62E3E00D4C0DE /* TaskEditorFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TaskEditorFeature;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1A8B7102D4A726A004493A8 /* Project object */;
 }

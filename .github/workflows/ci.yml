@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DESTINATION: platform=iOS Simulator,name=iPhone 17 Pro,OS=latest
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: SwiftLint
+        run: |
+          brew install swiftlint
+          swiftlint lint
+      - name: SwiftFormat
+        run: |
+          brew install swiftformat
+          swiftformat --lint .
+
+  test:
+    name: Build and test
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: "26.3"
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Cache Swift packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            DerivedData/SourcePackages
+          key: spm-${{ runner.os }}-${{ hashFiles('Packages/QuickTodoKit/Package.swift', 'QuickTodo.xcodeproj/project.pbxproj') }}
+          restore-keys: spm-${{ runner.os }}-
+
+      # One run covers the app tests, every package test target and the UI tests (see QuickTodo.xctestplan).
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project QuickTodo.xcodeproj \
+            -scheme QuickTodo \
+            -testPlan QuickTodo \
+            -destination "$DESTINATION" \
+            -derivedDataPath DerivedData \
+            -resultBundlePath TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcbeautify --renderer github-actions
+
+      - name: Coverage summary
+        if: success()
+        run: xcrun xccov view --report --only-targets TestResults.xcresult
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: TestResults.xcresult
