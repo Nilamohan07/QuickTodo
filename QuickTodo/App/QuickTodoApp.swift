@@ -9,11 +9,14 @@ import SwiftUI
 
 @main
 struct QuickTodoApp: App {
-    @State private var taskViewModel = TaskViewModel()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
     var body: some Scene {
         WindowGroup {
-            TaskListView(viewModel: taskViewModel)
+            RootView(environment: appDelegate.environment, router: appDelegate.router)
+                .onOpenURL { url in
+                    appDelegate.router.handle(url)
+                }
         }
     }
 }

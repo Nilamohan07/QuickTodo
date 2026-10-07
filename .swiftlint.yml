@@ -1,0 +1,49 @@
+included:
+  - QuickTodo
+  - QuickTodoTests
+  - QuickTodoUITests
+  - Packages/QuickTodoKit/Sources
+  - Packages/QuickTodoKit/Tests
+
+excluded:
+  - Packages/QuickTodoKit/.build
+
+disabled_rules:
+  - todo
+  # Trailing closures and SwiftUI builders make this one noisy.
+  - multiple_closures_with_trailing_closure
+
+opt_in_rules:
+  - closure_spacing
+  - collection_alignment
+  - contains_over_first_not_nil
+  - empty_count
+  - empty_string
+  - explicit_init
+  - first_where
+  - last_where
+  - modifier_order
+  - operator_usage_whitespace
+  - private_swiftui_state
+  - redundant_nil_coalescing
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+  - yoda_condition
+
+line_length:
+  warning: 130
+  error: 160
+  ignores_comments: true
+  ignores_urls: true
+
+type_body_length:
+  warning: 300
+
+file_length:
+  warning: 400
+
+identifier_name:
+  excluded: [id, x, y]
+
+reporter: xcode

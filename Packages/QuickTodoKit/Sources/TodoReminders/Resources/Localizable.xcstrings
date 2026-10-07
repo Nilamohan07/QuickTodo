@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Due Today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due Today"
+          }
+        }
+      },
+      "comment" : "Title of the reminder notification. The body is the task title."
+    }
+  },
+  "version" : "1.0"
+}
